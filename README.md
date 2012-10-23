@@ -1,6 +1,6 @@
 # HTML5 & JavaScript Snake Game version Beta
 
-Copyright **Matias Beckerle**
+by **Matias Beckerle**
 
 Licensed under The MIT License (http://www.opensource.org/licenses/mit-license.php)
 

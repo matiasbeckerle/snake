@@ -23,4 +23,4 @@ Licensed under The MIT License (http://www.opensource.org/licenses/mit-license.p
 
 ## Enjoy :)
 
-http://matias.beckerle.com.ar/demos/snake/
+Play: http://matias.beckerle.com.ar/demos/snake/ 

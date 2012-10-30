@@ -23,4 +23,8 @@ Licensed under The MIT License (http://www.opensource.org/licenses/mit-license.p
 
 ## Enjoy :)
 
-Play: http://matias.beckerle.com.ar/demos/snake/ 
+Play: http://matias.beckerle.com.ar/demos/snake/
+
+## Acknowledgements
+
+To all who wrote tutorials on HTML5 canvas.

@@ -1,6 +1,6 @@
 /**
- * HTML5 & JavaScript Snake Game version Beta
- * 2012-10-23
+ * HTML5 & JavaScript Snake Game version 1.0
+ * 2012-10-30
  * https://github.com/matiasbeckerle/snake
  * Copyright Matias Beckerle
  * Licensed under The MIT License (http://www.opensource.org/licenses/mit-license.php)
@@ -14,8 +14,10 @@ var SnakeGame = function(containerId){
     this.context = null;
     this.interval = null;
         
+    this.version = '1.0';    
     this.size = 10; // square size
-    this.speed = 200; // base speed
+    this.baseSpeed = 170; // base speed
+    this.speed = 0; // current speed
     this.score = 0;
     this.foodPerLevel = 5; // food required per level
     this.foodTaken = 0; // food already eaten
@@ -149,7 +151,7 @@ var SnakeGame = function(containerId){
         this.score = 0;
         this.Screen.refreshLevel();
         this.Screen.refreshScore();
-        this.speed = 200;
+        this.speed = this.baseSpeed;
         this.Snake.bornAgain();
     }
     
@@ -163,7 +165,7 @@ var SnakeGame = function(containerId){
         level: null,
         score: null,
         draw: function() {
-            var gameHtml = '<div id="snakeGame"><header><h1>Snake</h1><p><a href="javascript:;" id="start">Start</a>&nbsp;&nbsp;&nbsp;Level: <span id="level">?</span>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;Score: <span id="score">?</span></p></header><canvas id="gameboard" width="400" height="400"></canvas><footer><p>Beta version. This is currently in development.</p><p>by <a href="http://matias.beckerle.com.ar" target="_blank" title="matiasb">matiasb</a></p></footer></div>';
+            var gameHtml = '<div id="snakeGame"><header><h1>Snake</h1><p><a href="javascript:;" id="start">Start</a>&nbsp;&nbsp;&nbsp;Level: <span id="level">?</span>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;Score: <span id="score">?</span></p></header><canvas id="gameboard" width="400" height="400"></canvas><footer><p class="help">Just use the keyboard arrows to handle the snake.</p><p>Snake adaptation v' + self.version + ' by <a href="http://matias.beckerle.com.ar" target="_blank" title="matiasb">matiasb</a></p></footer></div>';
             this.container.innerHTML = gameHtml;
               
             this.gameboard = document.getElementById('gameboard');

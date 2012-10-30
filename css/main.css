@@ -72,6 +72,7 @@ header {
 
 footer {
     margin-top: 10px;
+    font-size: 90%;
 }
 
 h1 {
@@ -100,4 +101,8 @@ a:hover {
     height: 400px;
     background-color: #EEE;
     border: 1px solid #CCC;
+}
+
+p.help {
+    font-style: italic;
 }

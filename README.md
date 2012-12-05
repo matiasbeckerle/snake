@@ -27,4 +27,4 @@ Play: http://matias.beckerle.com.ar/demos/snake/
 
 ## Acknowledgements
 
-To all who wrote tutorials on HTML5 canvas.
+To all who wrote tutorials about HTML5 canvas.

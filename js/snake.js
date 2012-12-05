@@ -70,8 +70,8 @@ var SnakeGame = function(containerId){
         this.Screen.refreshLevel();
         
         this.Snake.moveRight();
-        this.Snake.position.x = 0;
-        this.Snake.position.y = 0;
+        this.Snake.position.x = 200;
+        this.Snake.position.y = 200;
                 
         this.Food.draw();
         this.Snake.draw();

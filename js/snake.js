@@ -149,8 +149,7 @@ var SnakeGame = function(containerId){
         this.context.clearRect(0, 0, this.Screen.gameboard.width, this.Screen.gameboard.height);
         this.currentLevel = 1;
         this.score = 0;
-        this.Screen.refreshLevel();
-        this.Screen.refreshScore();
+        this.Screen.restart();
         this.speed = this.baseSpeed;
         this.Snake.bornAgain();
     }
@@ -180,6 +179,10 @@ var SnakeGame = function(containerId){
         },
         refreshScore: function() {
             this.score.innerHTML = self.score;
+        },
+        restart: function() {
+            this.level.innerHTML = '?';
+            this.score.innerHTML = '?';
         }
     };
     

@@ -13,6 +13,8 @@ var SnakeGame = function(containerId){
     this.containerId = containerId;
     this.context = null;
     this.interval = null;
+    this.timeout = null;
+    this.countdownSeconds = 3;
         
     this.version = '1.0';    
     this.size = 10; // square size
@@ -63,16 +65,7 @@ var SnakeGame = function(containerId){
         }
     }
     
-    this.start = function() {
-        this.context.clearRect(0, 0, this.Screen.gameboard.width, this.Screen.gameboard.height);
-        
-        this.Screen.refreshScore();
-        this.Screen.refreshLevel();
-        
-        this.Snake.moveRight();
-        this.Snake.position.x = 200;
-        this.Snake.position.y = 200;
-                
+    this.start = function() {     
         this.Food.draw();
         this.Snake.draw();
                 
@@ -81,17 +74,42 @@ var SnakeGame = function(containerId){
                     
         this.lastCatchMoment = new Date();
 
-        if(this.interval != undefined) {
-            clearInterval(this.interval);
-        }
-        
+        this.clearTimeEvents();
         this.interval = setInterval(this.Snake.move, this.speed);
+    }
+    
+    this.beforeStart = function() {     
+        this.clearTimeEvents();
+        
+        this.context.clearRect(0, 0, this.Screen.gameboard.width, this.Screen.gameboard.height);
+
+        this.Snake.moveRight();
+        this.Snake.position.x = 200;
+        this.Snake.position.y = 200;
+        this.countdownSeconds = 3;
+        
+        this.Screen.refreshCountdown();
+        this.Screen.refreshScore();
+        this.Screen.refreshLevel();
+        
+        this.timeout = setTimeout(this.countdown, 1000);
+    }
+    
+    this.countdown = function() {
+        if(self.countdownSeconds > 1) {
+            self.countdownSeconds--;
+            self.Screen.refreshCountdown();
+            self.timeout = setTimeout(self.countdown, 1000);
+        } else {
+            self.Screen.hideCountdown();
+            self.start();
+        }
     }
     
     this.events = function() {
         this.Screen.start.onclick = function(){
             self.restart();
-            self.start();
+            self.beforeStart();
         };
         
         document.onkeydown = function(event) {
@@ -132,7 +150,7 @@ var SnakeGame = function(containerId){
             
         if(this.foodTaken == this.foodPerLevel) {
             this.currentLevel++;
-            this.start();
+            this.beforeStart();
         } else {
             this.Food.draw();
             this.lastCatchMoment = new Date();
@@ -140,9 +158,17 @@ var SnakeGame = function(containerId){
     }
         
     this.lost = function() {
-        clearInterval(self.interval);
+        this.clearTimeEvents();
         alert('Game over!\nYou have reached the level ' + this.currentLevel + ' and your score is ' + this.score + '.');
         this.restart();
+    }
+    
+    this.clearTimeEvents = function(){
+        if(self.timeout != undefined)
+            clearTimeout(self.timeout);
+        
+        if(self.interval != undefined)
+            clearInterval(self.interval);
     }
     
     this.restart = function() {
@@ -163,14 +189,16 @@ var SnakeGame = function(containerId){
         start: null,
         level: null,
         score: null,
+        countdown: null,
         draw: function() {
-            var gameHtml = '<div id="snakeGame"><header><h1>Snake</h1><p><a href="javascript:;" id="start">Start</a>&nbsp;&nbsp;&nbsp;Level: <span id="level">?</span>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;Score: <span id="score">?</span></p></header><canvas id="gameboard" width="400" height="400"></canvas><footer><p class="help">Just use the keyboard arrows to handle the snake.</p><p>Snake adaptation v' + self.version + ' by <a href="http://matias.beckerle.com.ar" target="_blank" title="matiasb">matiasb</a></p></footer></div>';
+            var gameHtml = '<div id="snakeGame"><header><h1>Snake</h1><p><a href="javascript:;" id="start">Start</a>&nbsp;&nbsp;&nbsp;Level: <span id="level">?</span>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;Score: <span id="score">?</span>&nbsp;&nbsp;&nbsp;<span id="countdown"></span></p></header><canvas id="gameboard" width="400" height="400"></canvas><footer><p class="help">Just use the keyboard arrows to handle the snake.</p><p>Snake adaptation v' + self.version + ' by <a href="http://matias.beckerle.com.ar" target="_blank" title="matiasb">matiasb</a></p></footer></div>';
             this.container.innerHTML = gameHtml;
               
             this.gameboard = document.getElementById('gameboard');
             this.start = document.getElementById('start');
             this.level = document.getElementById('level');
             this.score = document.getElementById('score');
+            this.countdown = document.getElementById('countdown');
              
             return self.checkIfCanvasIsSupported();
         },
@@ -180,9 +208,16 @@ var SnakeGame = function(containerId){
         refreshScore: function() {
             this.score.innerHTML = self.score;
         },
+        refreshCountdown: function() {
+            this.countdown.innerHTML = self.countdownSeconds;
+        },
         restart: function() {
             this.level.innerHTML = '?';
             this.score.innerHTML = '?';
+            this.hideCountdown();
+        },
+        hideCountdown: function() {
+            this.countdown.innerHTML = '';
         }
     };
     

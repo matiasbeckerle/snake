@@ -95,6 +95,12 @@ a:hover {
     font-weight: bold;
 }
 
+#countdown {
+    font-size: 80%;
+    font-style: italic;
+    text-decoration: blink;
+}
+
 #gameboard {
     margin: 0 auto;
     width: 400px;

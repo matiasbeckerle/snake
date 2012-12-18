@@ -1,6 +1,6 @@
 /**
- * HTML5 & JavaScript Snake Game version 1.0
- * 2012-10-30
+ * HTML5 & JavaScript Snake Game version 1.1
+ * 2012-12-18
  * https://github.com/matiasbeckerle/snake
  * Copyright Matias Beckerle
  * Licensed under The MIT License (http://www.opensource.org/licenses/mit-license.php)
@@ -16,7 +16,7 @@ var SnakeGame = function(containerId){
     this.timeout = null;
     this.countdownSeconds = 3;
         
-    this.version = '1.0';    
+    this.version = '1.1';    
     this.size = 10; // square size
     this.baseSpeed = 170; // base speed
     this.speed = 0; // current speed
@@ -191,7 +191,7 @@ var SnakeGame = function(containerId){
         score: null,
         countdown: null,
         draw: function() {
-            var gameHtml = '<div id="snakeGame"><header><h1>Snake</h1><p><a href="javascript:;" id="start">Start</a>&nbsp;&nbsp;&nbsp;Level: <span id="level">?</span>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;Score: <span id="score">?</span>&nbsp;&nbsp;&nbsp;<span id="countdown"></span></p></header><canvas id="gameboard" width="400" height="400"></canvas><footer><p class="help">Just use the keyboard arrows to handle the snake.</p><p>Snake adaptation v' + self.version + ' by <a href="http://matias.beckerle.com.ar" target="_blank" title="matiasb">matiasb</a></p></footer></div>';
+            var gameHtml = '<div id="snakeGame"><header><h1>Snake</h1><div id="board"><div><a href="javascript:;" id="start">START</a></div><div>Level: <span id="level">?</span></div><div>Score: <span id="score">?</span></div><div><span id="countdown"></span></div></div></header><canvas id="gameboard" width="400" height="400"></canvas><footer><p class="help">Just use the keyboard arrows to handle the snake.</p><p>Snake adaptation v' + self.version + ' by <a href="http://matias.beckerle.com.ar" target="_blank" title="matiasb">matiasb</a></p></footer></div>';
             this.container.innerHTML = gameHtml;
               
             this.gameboard = document.getElementById('gameboard');

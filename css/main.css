@@ -10,50 +10,50 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	outline: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
-	display: block;
+    display: block;
 }
 body {
-	line-height: 1;
+    line-height: 1;
 }
 ol, ul {
-	list-style: none;
+    list-style: none;
 }
 blockquote, q {
-	quotes: none;
+    quotes: none;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
-	content: none;
+    content: '';
+    content: none;
 }
- 
+
 /* remember to define visible focus styles! 
 :focus {
-	outline: ?????;
+        outline: ?????;
 } */
- 
+
 /* remember to highlight inserts somehow! */
 ins {
-	text-decoration: none;
+    text-decoration: none;
 }
 del {
-	text-decoration: line-through;
+    text-decoration: line-through;
 }
- 
+
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 
@@ -90,15 +90,48 @@ a:hover {
     border-bottom: 1px dashed #000;
 }
 
+#snakeGame {
+    margin: 0px auto;
+    width: 402px;
+}
+
+#board {
+    padding: 0px 1px;
+    margin-bottom: 50px;
+}
+
+#board div {
+    float: left;
+    width: 110px;
+    text-align: right;
+}
+
+#board div:first-child {
+    text-align: left;
+    width: auto;
+    padding-right: 10px;
+}
+
+#start {
+    color: #FFF;
+    font-size: 90%;
+    text-decoration: none;
+    background-color: #5CA7CC;
+    padding: 2px 6px 2px 6px;
+    border: 1px solid #006699;
+}
+
+#start:hover {
+    background-color: #006699;
+}
+
 #level, #score {
-    color: #666;
     font-weight: bold;
 }
 
 #countdown {
     font-size: 80%;
     font-style: italic;
-    text-decoration: blink;
 }
 
 #gameboard {

@@ -28,3 +28,16 @@ Play: http://matias.beckerle.com.ar/demos/snake/
 ## Acknowledgements
 
 To all who wrote tutorials about HTML5 canvas.
+
+## Changelog
+
+### 1.1
+
+* The snake start in the middle.
+* Countdown added and some refactoring.
+* Added new method "restart" in Screen object.
+* Styling.
+
+### 1.0
+
+* First version.
